@@ -1,6 +1,7 @@
 import React from 'react';
 import HeaderSearch from '../HeaderSearch';
 import styles from './index.less'
+import NoticeView from './NoticeView'
 
 const GlobalHeader = props => {
   const {them,layout} = props;
@@ -28,10 +29,11 @@ const GlobalHeader = props => {
             value: 'Pro Layout',
           },
         ]}  
-        onSearch={(value: any) => {
+        onSearch={(value) => {
           console.log('input', value);
         }}
       />
+      <NoticeView/>
     </div>
   )
 }
