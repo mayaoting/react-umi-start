@@ -35,7 +35,6 @@ const NoticeIcon = props => {
       }
 
       const { list,title,count,tabKey,showClear,showViewMore } =  child.props
-      console.log('childProps',child.props);
       const len = list && list.length ? list.length : 0;
       const msgCount = count || count === 0 ? count : len;
       const tabTitle = msgCount > 0 ? `${title}(${msgCount})` : title;

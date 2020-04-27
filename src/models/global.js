@@ -43,14 +43,13 @@ const GlobalModel = {
     },
 
     *changeNoticeReadState({ payload }, { put, select }) {
+      debugger
       const notices = yield select(state =>
         state.global.notices.map(item => {
           const notice = { ...item };
-
           if (notice.id === payload) {
             notice.read = true;
           }
-
           return notice;
         }),
       );

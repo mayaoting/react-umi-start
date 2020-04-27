@@ -22,14 +22,17 @@
   "dependencies": {
     "@umijs/preset-react": "^1.4.14",
     "@umijs/test": "^3.1.1",
+    "bizcharts": "^3.5.8",
     "classnames": "^2.2.6",
     "lint-staged": "^10.0.7",
     "lodash": "^4.17.15",
     "mockjs": "^1.1.0",
     "moment": "^2.24.0",
+    "numeral": "^2.0.6",
     "prettier": "^1.19.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-router": "^5.1.2",
     "umi": "^3.1.1",
     "umi-request": "^1.2.19",
     "yorkie": "^2.0.0"

@@ -7,6 +7,7 @@ import {
   UserOutlined,
 } from '@ant-design/icons';
 import React from 'react';
+import { Link, useIntl, connect } from 'umi';
 import RightContent from '../components/GlobalHeader/RightContent'
 import './index.less'
 
@@ -14,15 +15,18 @@ const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 
 class SiderDemo extends React.Component {
-  state = {
-    collapsed: false,
-  };
-
+  constructor(props) {
+    super(props);
+    this.state = {
+      collapsed: false,
+    };
+  }
   onCollapse = collapsed => {
     this.setState({ collapsed });
   };
 
   render() {
+    const { children } = this.props;
     return (
       <Layout style={{ minHeight: '100vh' }}>
         <Sider 
@@ -30,7 +34,7 @@ class SiderDemo extends React.Component {
           collapsible collapsed={this.state.collapsed} 
           onCollapse={this.onCollapse}>
           <div className="logo">
-            你不会知道这是啥
+            Shop
           </div>
           <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
             <SubMenu
@@ -42,9 +46,15 @@ class SiderDemo extends React.Component {
                 </span>
               }
             >
-              <Menu.Item key="1">分析页</Menu.Item>
-              <Menu.Item key="2">监控页</Menu.Item>
-              <Menu.Item key="3">工作台</Menu.Item>
+              <Menu.Item key="1">
+                <Link to={'/dashboard/analysis'}>分析页</Link>
+              </Menu.Item>
+              <Menu.Item key="2">
+                <Link to={'/dashboard/monitor'}>监控页</Link>
+              </Menu.Item>
+              <Menu.Item key="3">
+                <Link to={'/dashboard/workplace'}>工作台</Link>
+              </Menu.Item>
             </SubMenu>
             <SubMenu
               key="sub2"
@@ -72,8 +82,8 @@ class SiderDemo extends React.Component {
               <Breadcrumb.Item>User</Breadcrumb.Item>
               <Breadcrumb.Item>Bill</Breadcrumb.Item>
             </Breadcrumb>
-            <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
-              Bill is a cat.
+            <div  style={{ padding: 24, minHeight: 360 }}>
+              {children}
             </div>
           </Content>
           <Footer style={{ textAlign: 'center' }}>Base Umi And Ant Design Created by Catherine</Footer>

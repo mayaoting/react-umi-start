@@ -60,7 +60,6 @@ class NoticeView extends Component {
       }
       return newNotice;
     });
-    console.log(newNotices);
     return groupBy(newNotices, 'type');
   };
   getUnreadData = noticeData => {
