@@ -31,9 +31,10 @@ export function getTimeDistance(type) {
     const nextDate = moment(now).add(1,'months');
     const nextYear = nextDate.year();
     const nextMonth = nextDate.month();
+    console.log('nextMonth',nextMonth);
     return [
       moment(`${year}-${fixedZero(month + 1)}-01 00:00:00`),
-      moment(moment(`${nextYear}-${fixedZero(nextMonth + 1)}-01 00:00:00}`).valueOf() - 1000),
+      moment(moment(`${nextYear}-${fixedZero(nextMonth + 1)}-01 00:00:00`).valueOf() - 1000),
     ];
   }
   return [moment(`${year}-01-01 00:00:00`), moment(`${year}-12-31 23:59:59`)];
