@@ -87,7 +87,7 @@ const MiniArea = (props) => {
               {
                 line ? (
                   <Geom 
-                    style='line'
+                    type='line'
                     position="x*y"
                     shape="smooth"
                     color={borderColor}

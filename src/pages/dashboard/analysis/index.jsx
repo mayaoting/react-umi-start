@@ -1,10 +1,13 @@
 import React, { Suspense } from 'react';
 import IntroduceRow from './components/IntroduceRow';
+import { Col,Dropdown,Menu,Row} from 'antd';
 import { connect } from 'umi';
 import {getTimeDistance} from './utils/utils'
 import styles from './style.less';
 
 const SalesCard = React.lazy(() => import('./components/SalesCard'));
+const TopSearch = React.lazy(() => import('./components/TopSearch'));
+const ProportionSales  = React.lazy(() => import('./components/ProportionSales'));
 
 class Analysis extends React.Component {
   state = {
@@ -31,6 +34,9 @@ class Analysis extends React.Component {
       })
     }
   }
+  handleChangeSalesType = (type) => {
+    
+  }
   isActive = type => {
     const  { rangePickerValue} = this.state;
     if(!rangePickerValue) {
@@ -55,7 +61,7 @@ class Analysis extends React.Component {
       dashboardAndanalysis,
     } = this.props
     const { rangePickerValue} = this.state;
-    const {visitData,salesData,rankListData} = dashboardAndanalysis;
+    const {visitData,salesData,rankListData,visitData2,searchData} = dashboardAndanalysis;
     return (  
       <React.Fragment>
         <Suspense fallback={<h1>Page loading ....</h1>}>
@@ -71,6 +77,28 @@ class Analysis extends React.Component {
             selectDate={this.selectDate}
           />
         </Suspense>
+        <Row gutter={24} style={{marginTop:'24px'}}>
+          <Col xl={12} lg={24} md={24} sm={24} xs={24}>
+            <Suspense fallback={null}>
+              <TopSearch 
+                loading={loading}
+                visitData2={visitData2}
+                searchData={searchData}
+              />
+            </Suspense>
+          </Col>
+          <Col xl={12} lg={24} md={24} sm={24} xs={24}>
+            <Suspense fallback={null}>
+              <ProportionSales 
+                loading={loading}
+                salesType={'all'}
+                handleChangeSalesType={this.handleChangeSalesType}
+                // visitData2={visitData2}
+              />
+            </Suspense>
+          </Col>
+
+        </Row>
       </React.Fragment>
     );
   }

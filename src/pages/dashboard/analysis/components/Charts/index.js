@@ -3,7 +3,8 @@ import Field from './Field';
 import MiniArea from './MiniArea';
 import MiniBar from './MiniBar'
 import MiniProgress from './MiniProgress';
-import Bar from './Bar'
+import Bar from './Bar';
+import Pie from './Pie';
 import numeral from 'numeral'
 const yuan = val => `¥ ${numeral(val).format('0,0')}`;
 
@@ -14,7 +15,8 @@ const Charts = {
   MiniArea,
   MiniBar,
   MiniProgress,
-  Bar
+  Bar,
+  Pie,
 };
 
 export {
@@ -25,5 +27,6 @@ export {
   MiniArea,
   MiniBar,
   MiniProgress,
-  Bar
+  Bar,
+  Pie,
 }
