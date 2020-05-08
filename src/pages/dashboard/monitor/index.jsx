@@ -20,7 +20,7 @@ class Monitor extends Component {
   }
   render() { 
     const {dashboardAndmonitor,loading} = this.props;
-    // const { tags } = dashboardAndmonitor;
+    const { tags } = dashboardAndmonitor;
     const  deadline = Date.now() + 1000 * 60 * 60 * 24 * 2 + 1000 * 30; 
     return (  
       <React.Fragment>
@@ -123,7 +123,7 @@ class Monitor extends Component {
               loading={loading}
               bodyStyle={{overflow:'hidden',}}
             >
-              <TagCloud/>
+              <TagCloud data={tags || []} height={161}/>
             </Card>
           </Col>
         </Row>

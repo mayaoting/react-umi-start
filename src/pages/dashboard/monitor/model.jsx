@@ -1,4 +1,4 @@
-import queryTags from './service';
+import {queryTags} from './service';
 const Model = {
   namespace:'dashboardAndmonitor',
   state:{
@@ -15,8 +15,9 @@ const Model = {
   },
   reducers: {
     saveTags(state,action) {
-      return { ...state,tags:action.payload };
+      return { ...state, tags:action.payload };
     }
   }
 
 }
+export default Model;
