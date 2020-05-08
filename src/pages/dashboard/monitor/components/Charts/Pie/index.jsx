@@ -3,7 +3,7 @@ import { Chart,Geom,Tooltip,Coord} from 'bizcharts'
 import { Divider} from 'antd';
 import Debounce from 'lodash.debounce';
 import classnames from 'classnames';
-import autoHeight from '../autoHeight';
+import autoHeight from '../../autoHeight';
 import { DataView } from '@antv/data-set'
 import styles from './index.less';
 
@@ -102,6 +102,7 @@ class Pie extends Component {
       inner = 0.75,
       lineWidth = 1,
       percent,
+      color,
       colors,
       subTitle,
       total,

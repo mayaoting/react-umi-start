@@ -34,8 +34,10 @@ class Analysis extends React.Component {
       })
     }
   }
-  handleChangeSalesType = (type) => {
-    
+  handleChangeSalesType = e => {
+    this.setState({
+      salesType:e.target.value,
+    })
   }
   isActive = type => {
     const  { rangePickerValue} = this.state;
@@ -60,8 +62,24 @@ class Analysis extends React.Component {
       loading,
       dashboardAndanalysis,
     } = this.props
-    const { rangePickerValue} = this.state;
-    const {visitData,salesData,rankListData,visitData2,searchData} = dashboardAndanalysis;
+    const { rangePickerValue,salesType} = this.state;
+    const {
+      visitData,
+      salesData,
+      rankListData,
+      visitData2,
+      searchData,
+      salesTypeData,
+      salesTypeDataOnline,
+      salesTypeDataOffline,
+    } = dashboardAndanalysis;
+    let salesPieData; 
+    if(salesType === 'all') {
+      salesPieData = salesTypeData;
+    } else {
+      salesPieData = salesType === 'online' ? salesTypeDataOnline : salesTypeDataOffline;
+    }
+    
     return (  
       <React.Fragment>
         <Suspense fallback={<h1>Page loading ....</h1>}>
@@ -91,9 +109,9 @@ class Analysis extends React.Component {
             <Suspense fallback={null}>
               <ProportionSales 
                 loading={loading}
-                salesType={'all'}
+                salesType={salesType}
                 handleChangeSalesType={this.handleChangeSalesType}
-                // visitData2={visitData2}
+                salesPieData={salesPieData}
               />
             </Suspense>
           </Col>

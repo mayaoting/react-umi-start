@@ -20,6 +20,7 @@
     ]
   },
   "dependencies": {
+    "@antv/data-set": "^0.11.4",
     "@umijs/preset-react": "^1.4.14",
     "@umijs/test": "^3.1.1",
     "bizcharts": "^3.5.8",
