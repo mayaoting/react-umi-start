@@ -8,8 +8,8 @@ import {
 } from '@ant-design/icons';
 import React from 'react';
 import { Link, useIntl, connect } from 'umi';
-import RightContent from '../components/GlobalHeader/RightContent'
-import './index.less'
+import RightContent from '../components/GlobalHeader/RightContent';
+import './index.less';
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -29,13 +29,13 @@ class SiderDemo extends React.Component {
     const { children } = this.props;
     return (
       <Layout style={{ minHeight: '100vh' }}>
-        <Sider 
-          breakpoint='lg'
-          collapsible collapsed={this.state.collapsed} 
-          onCollapse={this.onCollapse}>
-          <div className="logo">
-            Shop
-          </div>
+        <Sider
+          breakpoint="lg"
+          collapsible
+          collapsed={this.state.collapsed}
+          onCollapse={this.onCollapse}
+        >
+          <div className="logo">Shop</div>
           <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
             <SubMenu
               key="sub1"
@@ -61,36 +61,40 @@ class SiderDemo extends React.Component {
               title={
                 <span>
                   <TeamOutlined />
-                  <span>Team</span>
+                  <span>表单页</span>
                 </span>
               }
             >
-              <Menu.Item key="4">Team 1</Menu.Item>
-              <Menu.Item key="5">Team 2</Menu.Item>
+              <Menu.Item key="4">
+                基础表单
+                <Link to={'/form/basic-form'} />
+              </Menu.Item>
+              <Menu.Item key="5">分布表单</Menu.Item>
+              <Menu.Item key="6">高级表单</Menu.Item>
             </SubMenu>
-            <Menu.Item key="6">
+            <Menu.Item key="7">
               <FileOutlined />
             </Menu.Item>
           </Menu>
         </Sider>
         <Layout className="site-layout">
-          <Header className="site-layout-background" style={{ padding: 0 }} >
-            <RightContent/>
+          <Header className="site-layout-background" style={{ padding: 0 }}>
+            <RightContent />
           </Header>
           <Content style={{ margin: '0 16px' }}>
-            <Breadcrumb style={{ margin: '16px 0' }}>
+            {/* <Breadcrumb style={{ margin: '16px 0' }}>
               <Breadcrumb.Item>User</Breadcrumb.Item>
               <Breadcrumb.Item>Bill</Breadcrumb.Item>
-            </Breadcrumb>
-            <div  style={{ padding: 24, minHeight: 360 }}>
-              {children}
-            </div>
+            </Breadcrumb> */}
+            <div style={{ padding: 24, minHeight: 360 }}>{children}</div>
           </Content>
-          <Footer style={{ textAlign: 'center' }}>Base Umi And Ant Design Created by Catherine</Footer>
+          <Footer style={{ textAlign: 'center' }}>
+            Base Umi And Ant Design Created by Catherine
+          </Footer>
         </Layout>
       </Layout>
     );
   }
 }
 
-export default SiderDemo
+export default SiderDemo;
