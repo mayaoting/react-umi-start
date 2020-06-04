@@ -1,5 +1,6 @@
 import React, { FC, Dispatch } from 'react';
 import { PageHeaderWrapper } from '@ant-design/pro-layout';
+import { connect } from 'umi';
 import {
   Button,
   Card,
@@ -11,6 +12,7 @@ import {
   Select,
   Tooltip,
 } from 'antd';
+import { InfoCircleOutlined } from '@ant-design/icons';
 import styles from './style.less';
 
 const FormItem = Form.Item;
@@ -37,7 +39,19 @@ const BasicForm: FC<BasicFormProps> = props => {
       md: { span: 10 },
     },
   };
-  const onFinish = (values: { [key: string]: any }) => {};
+  const submitFormLayout = {
+    wrapperCol: {
+      xs: { span: 24, offset: 0 },
+      sm: { span: 10, offset: 7 },
+    },
+  };
+  const onFinish = (values: { [key: string]: any }) => {
+    const { dispatch } = props;
+    dispatch({
+      type: 'formAndBasicForm/submitRegularForm',
+      payload: values,
+    });
+  };
   const onFinishFaild = (errorInfo: any) => {
     console.log('Failed', errorInfo);
   };
@@ -128,10 +142,35 @@ const BasicForm: FC<BasicFormProps> = props => {
               rows={4}
             />
           </FormItem>
+          <FormItem
+            {...formItemLayout}
+            label={
+              <span>
+                客户
+                <em className={styles.optional}>(选填)</em>
+                <Tooltip title={'目标的服务对象'}>
+                  <InfoCircleOutlined style={{ marginRight: 4 }} />
+                </Tooltip>
+              </span>
+            }
+            name="client"
+          >
+            <Input />
+          </FormItem>
+          <FormItem {...submitFormLayout} style={{ marginTop: 32 }}>
+            <Button type="primary" htmlType="submit" loading={submitting}>
+              提交
+            </Button>
+            <Button style={{ marginLeft: 8 }}>保存</Button>
+          </FormItem>
         </Form>
       </Card>
     </PageHeaderWrapper>
   );
 };
 
-export default BasicForm;
+export default connect(
+  ({ loading }: { loading: { effects: { [key: string]: boolean } } }) => ({
+    submitting: loading.effects['formAndbasicForm/submitRegularForm'],
+  }),
+)(BasicForm);
