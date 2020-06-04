@@ -1,17 +1,7 @@
 import React, { FC, Dispatch } from 'react';
 import { PageHeaderWrapper } from '@ant-design/pro-layout';
 import { connect } from 'umi';
-import {
-  Button,
-  Card,
-  DatePicker,
-  Input,
-  Form,
-  InputNumber,
-  Radio,
-  Select,
-  Tooltip,
-} from 'antd';
+import { Button, Card, DatePicker, Input, Form, Tooltip } from 'antd';
 import { InfoCircleOutlined } from '@ant-design/icons';
 import styles from './style.less';
 
@@ -48,18 +38,18 @@ const BasicForm: FC<BasicFormProps> = props => {
   const onFinish = (values: { [key: string]: any }) => {
     const { dispatch } = props;
     dispatch({
-      type: 'formAndBasicForm/submitRegularForm',
+      type: 'formAndbasicForm/submitRegularForm',
       payload: values,
     });
   };
-  const onFinishFaild = (errorInfo: any) => {
-    console.log('Failed', errorInfo);
+
+  const onFinishFailed = (errorInfo: any) => {
+    console.log('Failed:', errorInfo);
   };
+
   const onValuesChange = (changedValues: { [key: string]: any }) => {
     const { publicType } = changedValues;
-    if (publicType) {
-      setShowPublicUsers(publicType === '2');
-    }
+    if (publicType) setShowPublicUsers(publicType === '2');
   };
   return (
     <PageHeaderWrapper
@@ -76,7 +66,7 @@ const BasicForm: FC<BasicFormProps> = props => {
           name="basic"
           initialValues={{ public: '1' }}
           onFinish={onFinish}
-          onFinishFailed={onFinishFaild}
+          onFinishFailed={onFinishFailed}
           onValuesChange={onValuesChange}
         >
           <FormItem
