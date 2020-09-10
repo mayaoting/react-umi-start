@@ -42,6 +42,11 @@ export default defineConfig({
               path: '/form/basic-form',
               component: './form/basic-form',
             },
+            {
+              name: 'step-form',
+              path: '/form/step-form',
+              component: './form/step-form',
+            },
           ],
         },
       ],

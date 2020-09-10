@@ -69,7 +69,10 @@ class SiderDemo extends React.Component {
                 基础表单
                 <Link to={'/form/basic-form'} />
               </Menu.Item>
-              <Menu.Item key="5">分布表单</Menu.Item>
+              <Menu.Item key="5">
+                分布表单
+                <Link to={'/form/step-form'} />
+              </Menu.Item>
               <Menu.Item key="6">高级表单</Menu.Item>
             </SubMenu>
             <Menu.Item key="7">
